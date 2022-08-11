@@ -17,7 +17,7 @@ namespace JenkinsTraining
         {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"; 
-            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", RootDirectory + "\\Drivers\\chromedriver.exe");
+            System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", RootDirectory + "\\chromedriver.exe");
             options.AddUserProfilePreference("disable-popup-blocking", "true");
             driver = new ChromeDriver(options);
         }
