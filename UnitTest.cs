@@ -10,10 +10,10 @@ namespace JenkinsTraining
     public class UnitTest
     {
         public static IWebDriver driver;
-        string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
+        static string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
         [ClassInitialize]
-        public void setupBrowser() {
+        public static void setupBrowser(TestContext context) {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
             System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", RootDirectory + "\\chromedriver.exe");
@@ -45,7 +45,7 @@ namespace JenkinsTraining
         }
 
         [ClassCleanup]
-        public void closebrowser() {
+        public static void closebrowser() {
             driver.Close();
         }
     }
