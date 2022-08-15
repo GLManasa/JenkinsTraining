@@ -12,7 +12,7 @@ namespace JenkinsTraining
         public static IWebDriver driver;
         string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
-        [TestInitialize]
+        [ClassInitialize]
         public void setupBrowser() {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
@@ -44,7 +44,7 @@ namespace JenkinsTraining
             Console.WriteLine("Maximize chrome window");
         }
 
-        [TestCleanup]
+        [ClassCleanup]
         public void closebrowser() {
             driver.Close();
         }
