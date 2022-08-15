@@ -26,6 +26,7 @@ namespace JenkinsTraining
         {
             driver.Navigate().GoToUrl("http://www.google.com");
             Console.WriteLine("Open Google");
+            driver.Close();
         }
 
 
@@ -35,6 +36,7 @@ namespace JenkinsTraining
             driver.SwitchTo().ActiveElement().SendKeys("Google");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google");
+            driver.Close();
         }
 
         [TestMethod, TestCategory("Third"), Priority(3)]
@@ -42,10 +44,6 @@ namespace JenkinsTraining
         {
             driver.Manage().Window.Maximize();
             Console.WriteLine("Maximize chrome window");
-        }
-
-        [TestCleanup]
-        public void closebrowser() {
             driver.Close();
         }
     }
