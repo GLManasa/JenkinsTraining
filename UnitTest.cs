@@ -29,7 +29,7 @@ namespace JenkinsTraining
             driver.Manage().Window.Maximize();
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google");
-            driver.Close();
+            driver.Quit();
         }
 
 
@@ -42,7 +42,7 @@ namespace JenkinsTraining
             driver.Manage().Window.Maximize();
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Gmail");
-            driver.Close();
+            driver.Quit();
         }
 
         [TestMethod, TestCategory("Third")]
@@ -54,7 +54,7 @@ namespace JenkinsTraining
             driver.Manage().Window.Maximize();
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google Drive");
-            driver.Close();
+            driver.Quit();
         }
     }
 }
