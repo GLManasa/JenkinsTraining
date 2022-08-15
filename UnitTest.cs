@@ -9,7 +9,7 @@ namespace JenkinsTraining
     [TestClass]
     public class UnitTest
     {
-        public static IWebDriver driver;
+        public IWebDriver driver;
         static string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
         public void setupBrowser() {
