@@ -12,31 +12,40 @@ namespace JenkinsTraining
         public static IWebDriver driver;
         string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
-        [TestMethod, TestCategory("First"), Priority(1)]
-        public void TestMethod1() 
-        {
+        [TestInitialize]
+        public void setupBrowser() {
             ChromeOptions options = new ChromeOptions();
-            options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"; 
+            options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
             System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", RootDirectory + "\\chromedriver.exe");
             options.AddUserProfilePreference("disable-popup-blocking", "true");
             driver = new ChromeDriver(options);
+        }
+
+        [TestMethod, TestCategory("First"), Priority(1)]
+        public void TestMethod1() 
+        {
+            driver.Navigate().GoToUrl("http://www.google.com");
+            Console.WriteLine("Open Google");
         }
 
 
         [TestMethod, TestCategory("Second"), Priority(2)]
         public void TestMethod2()
         {
-            driver.Navigate().GoToUrl("http://www.google.com");
-            Console.WriteLine("Second Test Method");
+            driver.SwitchTo().ActiveElement().SendKeys("Google");
+            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            Console.WriteLine("Search keyword - Google");
         }
 
         [TestMethod, TestCategory("Third"), Priority(3)]
         public void TestMethod3()
         {
-            driver.SwitchTo().ActiveElement().SendKeys("Google");
-            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             driver.Manage().Window.Maximize();
-            Console.WriteLine("Third Test Method");
+            Console.WriteLine("Maximize chrome window");
+        }
+
+        [TestCleanup]
+        public void closebrowser() {
             driver.Close();
         }
     }
