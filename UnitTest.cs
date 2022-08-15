@@ -36,7 +36,7 @@ namespace JenkinsTraining
         [TestMethod, TestCategory("Second")]
         public void TestMethod2()
         {
-            setupBrowser();
+            setupBrowser()
             driver.Navigate().GoToUrl("http://www.google.com");
             driver.SwitchTo().ActiveElement().SendKeys("Gmail");
             driver.Manage().Window.Maximize();
