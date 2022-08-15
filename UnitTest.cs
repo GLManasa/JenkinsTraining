@@ -9,49 +9,43 @@ namespace JenkinsTraining
     [TestClass]
     public class UnitTest
     {
-        public IWebDriver driver;
+        public static IWebDriver driver;
         static string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
-        public void setupBrowser() {
+        [ClassInitialize]
+        public static void setupBrowser(TestContext tc) {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
             System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", RootDirectory + "\\chromedriver.exe");
             options.AddUserProfilePreference("disable-popup-blocking", "true");
             driver = new ChromeDriver(options);
+            driver.Manage().Window.Maximize();
         }
 
-        [TestMethod, TestCategory("First")]
+        [TestMethod, TestCategory("First"), Priority(1)]
         public void TestMethod1() 
         {
-            setupBrowser();
             driver.Navigate().GoToUrl("http://www.google.com");
             driver.SwitchTo().ActiveElement().SendKeys("Google");
-            driver.Manage().Window.Maximize();
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google");
-            driver.Quit();
         }
 
 
         [TestMethod, TestCategory("Second")]
         public void TestMethod2()
         {
-            setupBrowser();
-            driver.Navigate().GoToUrl("http://www.google.com");
-            driver.SwitchTo().ActiveElement().SendKeys("Gmail");
-            driver.Manage().Window.Maximize();
+            driver.FindElement(By.Name("q")).Clear();
+            driver.FindElement(By.Name("q")).SendKeys("Gmail");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Gmail");
-            driver.Quit();
         }
 
         [TestMethod, TestCategory("Third")]
         public void TestMethod3()
         {
-            setupBrowser();
-            driver.Navigate().GoToUrl("http://www.google.com");
-            driver.SwitchTo().ActiveElement().SendKeys("Google Drive");
-            driver.Manage().Window.Maximize();
+            driver.FindElement(By.Name("q")).Clear();
+            driver.FindElement(By.Name("q")).SendKeys("Google Drive");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google Drive");
             driver.Quit();
