@@ -12,7 +12,6 @@ namespace JenkinsTraining
         public static IWebDriver driver;
         static string RootDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory())));
 
-        [TestInitialize]
         public void setupBrowser() {
             ChromeOptions options = new ChromeOptions();
             options.BinaryLocation = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
@@ -24,6 +23,7 @@ namespace JenkinsTraining
         [TestMethod, TestCategory("First"), Priority(1)]
         public void TestMethod1() 
         {
+            setupBrowser();
             driver.Navigate().GoToUrl("http://www.google.com");
             Console.WriteLine("Open Google");
             driver.Close();
@@ -33,6 +33,7 @@ namespace JenkinsTraining
         [TestMethod, TestCategory("Second"), Priority(2)]
         public void TestMethod2()
         {
+            setupBrowser();
             driver.SwitchTo().ActiveElement().SendKeys("Google");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google");
@@ -42,6 +43,7 @@ namespace JenkinsTraining
         [TestMethod, TestCategory("Third"), Priority(3)]
         public void TestMethod3()
         {
+            setupBrowser();
             driver.Manage().Window.Maximize();
             Console.WriteLine("Maximize chrome window");
             driver.Close();
