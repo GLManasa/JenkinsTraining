@@ -20,32 +20,40 @@ namespace JenkinsTraining
             driver = new ChromeDriver(options);
         }
 
-        [TestMethod, TestCategory("First"), Priority(1)]
+        [TestMethod, TestCategory("First")]
         public void TestMethod1() 
         {
             setupBrowser();
             driver.Navigate().GoToUrl("http://www.google.com");
-            Console.WriteLine("Open Google");
-            driver.Close();
-        }
-
-
-        [TestMethod, TestCategory("Second"), Priority(2)]
-        public void TestMethod2()
-        {
-            setupBrowser();
             driver.SwitchTo().ActiveElement().SendKeys("Google");
+            driver.Manage().Window.Maximize();
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
             Console.WriteLine("Search keyword - Google");
             driver.Close();
         }
 
-        [TestMethod, TestCategory("Third"), Priority(3)]
+
+        [TestMethod, TestCategory("Second")]
+        public void TestMethod2()
+        {
+            setupBrowser();
+            driver.Navigate().GoToUrl("http://www.google.com");
+            driver.SwitchTo().ActiveElement().SendKeys("Gmail");
+            driver.Manage().Window.Maximize();
+            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            Console.WriteLine("Search keyword - Gmail");
+            driver.Close();
+        }
+
+        [TestMethod, TestCategory("Third")]
         public void TestMethod3()
         {
             setupBrowser();
+            driver.Navigate().GoToUrl("http://www.google.com");
+            driver.SwitchTo().ActiveElement().SendKeys("Google Drive");
             driver.Manage().Window.Maximize();
-            Console.WriteLine("Maximize chrome window");
+            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            Console.WriteLine("Search keyword - Google Drive");
             driver.Close();
         }
     }
