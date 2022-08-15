@@ -28,6 +28,7 @@ namespace JenkinsTraining
             driver.Navigate().GoToUrl("http://www.google.com");
             driver.SwitchTo().ActiveElement().SendKeys("Google");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine("Search keyword - Google");
         }
 
@@ -38,6 +39,7 @@ namespace JenkinsTraining
             driver.FindElement(By.Name("q")).Clear();
             driver.FindElement(By.Name("q")).SendKeys("Gmail");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine("Search keyword - Gmail");
         }
 
@@ -47,6 +49,7 @@ namespace JenkinsTraining
             driver.FindElement(By.Name("q")).Clear();
             driver.FindElement(By.Name("q")).SendKeys("Google Drive");
             driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine("Search keyword - Google Drive");
             driver.Quit();
         }
