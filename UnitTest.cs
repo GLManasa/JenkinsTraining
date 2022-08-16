@@ -26,7 +26,7 @@ namespace JenkinsTraining
         [TestMethod, TestCategory("First")]
         public void TestMethod1() 
         {
-            driver.FindElement(By.XPath("//li[@data-creative='offer-banner'][1]")).Click();
+            driver.FindElement(By.XPath("//li[@data-creative='offer-banner'][1]")).Click()
         }
 
 
