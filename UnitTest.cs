@@ -20,37 +20,26 @@ namespace JenkinsTraining
             options.AddUserProfilePreference("disable-popup-blocking", "true");
             driver = new ChromeDriver(options);
             driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://www.redbus.in/");
         }
 
-        [TestMethod, TestCategory("First"), Priority(1)]
+        [TestMethod, TestCategory("First")]
         public void TestMethod1() 
         {
-            driver.Navigate().GoToUrl("http://www.google.com");
-            driver.SwitchTo().ActiveElement().SendKeys("Google");
-            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("Search keyword - Google");
+            driver.FindElement(By.XPath("//li[@data-creative='offer-banner'][1]")).Click();
         }
 
 
         [TestMethod, TestCategory("Second")]
         public void TestMethod2()
         {
-            driver.FindElement(By.Name("q")).Clear();
-            driver.FindElement(By.Name("q")).SendKeys("Gmail");
-            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("Search keyword - Gmail");
+            driver.FindElement(By.XPath("//li[@data-creative='offer-banner'][2]")).Click();
         }
 
         [TestMethod, TestCategory("Third")]
         public void TestMethod3()
         {
-            driver.FindElement(By.Name("q")).Clear();
-            driver.FindElement(By.Name("q")).SendKeys("Google Drive");
-            driver.SwitchTo().ActiveElement().SendKeys(Keys.Enter);
-            System.Threading.Thread.Sleep(2000);
-            Console.WriteLine("Search keyword - Google Drive");
+            driver.FindElement(By.XPath("//li[@data-creative='offer-banner'][3]")).Click();
             driver.Quit();
         }
     }
